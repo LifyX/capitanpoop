@@ -184,10 +184,10 @@ export function Contact() {
           />
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Column 1: Contact Form & Why Choose Us */}
           <div className="space-y-8">
-            <div className="bg-gray-50 rounded-2xl p-8 md:p-12">
+            <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg">
               <h2 className="text-2xl font-bold mb-6">Envíanos un Mensaje</h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
@@ -239,7 +239,7 @@ export function Contact() {
             </div>
 
             {/* Why Choose Us */}
-            <div className="bg-gradient-to-br from-[#C9BFDB]/20 to-[#F5C8D8]/20 rounded-2xl p-8">
+            <div className="bg-gradient-to-br from-[#C9BFDB]/20 to-[#F5C8D8]/20 rounded-2xl p-8 shadow-lg">
               <h3 className="text-xl font-bold mb-6">{t('contact.whyChooseUs')}</h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
@@ -287,7 +287,7 @@ export function Contact() {
 
           {/* Column 2: Contact Info */}
           <div className="space-y-8">
-            <div>
+            <div className="bg-white rounded-2xl p-8 pb-[2.7rem] shadow-lg">
               <h2 className="text-2xl font-bold mb-6 text-center">Información de Contacto</h2>
               
               <div className="space-y-6">
@@ -368,27 +368,53 @@ export function Contact() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
 
-            {/* Business Hours */}
-            <div className="bg-blue-50 rounded-2xl p-8">
-              <h3 className="text-xl font-bold mb-4">{t('contact.businessHours')}</h3>
-              <div className="space-y-2 text-gray-700">
-                <div className="flex justify-between">
-                  <span>{t('contact.monday-friday')}</span>
-                  <span className="font-semibold">9:00 AM - 6:00 PM</span>
+        {/* Business Hours - Full Width */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mt-12"
+        >
+          <div className="bg-gradient-to-br from-[#7BC4DB]/20 to-[#5BC0EB]/20 rounded-2xl p-8 md:p-12 shadow-lg">
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-2xl md:text-3xl font-bold mb-8 text-center">{t('contact.businessHours')}</h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="bg-white/60 backdrop-blur rounded-xl p-6 text-center shadow-sm hover:shadow-md transition-shadow">
+                  <div className="w-16 h-16 bg-gradient-to-br from-[#7BC4DB] to-[#5BC0EB] rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <h4 className="font-bold text-lg mb-2">{t('contact.monday-friday')}</h4>
+                  <p className="text-2xl font-bold text-[#5BC0EB]">9:00 AM - 6:00 PM</p>
                 </div>
-                <div className="flex justify-between">
-                  <span>{t('contact.saturday')}</span>
-                  <span className="font-semibold">10:00 AM - 2:00 PM</span>
+                
+                <div className="bg-white/60 backdrop-blur rounded-xl p-6 text-center shadow-sm hover:shadow-md transition-shadow">
+                  <div className="w-16 h-16 bg-gradient-to-br from-[#8B7FB8] to-[#C9BFDB] rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <h4 className="font-bold text-lg mb-2">{t('contact.saturday')}</h4>
+                  <p className="text-2xl font-bold text-[#8B7FB8]">10:00 AM - 2:00 PM</p>
                 </div>
-                <div className="flex justify-between">
-                  <span>{t('contact.sunday')}</span>
-                  <span className="font-semibold">{t('contact.closed')}</span>
+                
+                <div className="bg-white/60 backdrop-blur rounded-xl p-6 text-center shadow-sm hover:shadow-md transition-shadow">
+                  <div className="w-16 h-16 bg-gradient-to-br from-[#FF6B7A] to-[#F5C8D8] rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </div>
+                  <h4 className="font-bold text-lg mb-2">{t('contact.sunday')}</h4>
+                  <p className="text-2xl font-bold text-[#FF6B7A]">{t('contact.closed')}</p>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Comprehensive FAQ Section */}
         <motion.div 
