@@ -585,31 +585,6 @@ export function Home() {
         </div>
       </section>
 
-      {/* Trust Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {t('trust.title')}
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-6 rounded-lg border border-gray-200 hover:border-blue-300 hover:shadow-lg transition">
-              <div className="text-5xl mb-4">💳</div>
-              <h3 className="font-semibold mb-2">{t('trust.securePayment').split(' ')[0]}</h3>
-              <p className="text-sm text-gray-600">{t('trust.securePayment')}</p>
-            </div>
-
-            <div className="text-center p-6 rounded-lg border border-gray-200 hover:border-blue-300 hover:shadow-lg transition">
-              <div className="text-5xl mb-4">🌿</div>
-              <h3 className="font-semibold mb-2">{t('trust.natural')}</h3>
-              <p className="text-sm text-gray-600">{t('trust.natural')}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Social Proof */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-[#E8C4D8]/20 via-[#F4DB5E]/10 to-[#5BC0EB]/20">
         <div className="mx-auto max-w-7xl px-6">
