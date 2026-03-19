@@ -43,151 +43,153 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur shadow-md" role="banner">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-x-6 px-6 py-4" aria-label="Main navigation">
-        {/* Logo */}
-        <Link 
-          to="/" 
-          className="flex items-center gap-2" 
-          aria-label="Capitan Poop - Go to homepage"
-          onClick={handleHomeClick}
-        >
-          <motion.img 
-            whileHover={{ scale: 1.05, rotate: 2 }}
-            transition={{ type: "spring", stiffness: 300 }}
-            src={logoImage} 
-            alt="Capitan Poop Logo" 
-            className="h-12 w-auto" 
-          />
-        </Link>
-
-        {/* Desktop Navigation */}
-        <div className="hidden lg:flex lg:gap-x-8 lg:items-center" role="navigation" aria-label="Primary">
-          <Link to="/" className="text-sm font-medium hover:text-[#8B7FB8] transition" onClick={handleHomeClick}>
-            {t('nav.home')}
-          </Link>
-
-          {/* Shop Link - No Dropdown */}
-          <Link to="/products" className="text-sm font-medium hover:text-[#8B7FB8] transition">
-            {t('nav.shop')}
-          </Link>
-
-          <Link to="/about" className="text-sm font-medium hover:text-[#8B7FB8] transition">
-            {t('nav.about')}
-          </Link>
-
-          <Link to="/our-method" className="text-sm font-medium hover:text-[#8B7FB8] transition">
-            {t('nav.ourMethod')}
-          </Link>
-          <Link to="/contact" className="text-sm font-medium hover:text-[#8B7FB8] transition">
-            {t('nav.contact')}
-          </Link>
-        </div>
-
-        {/* Right side buttons */}
-        <div className="flex items-center gap-2">
-          {/* Login - Desktop Only */}
-          <Link to="/login" className="hidden lg:block">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button variant="ghost" size="sm" className="font-medium">
-                {t('nav.login')}
-              </Button>
-            </motion.div>
-          </Link>
-
-          {/* Wishlist - Desktop Only */}
-          <Link to="/wishlist" className="relative hidden lg:block" aria-label={`Wishlist with ${totalWishlistItems} items`}>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button variant="ghost" size="sm" className="flex items-center gap-1.5 font-medium">
-                <Heart className="h-5 w-5 text-red-500 fill-red-500" aria-hidden="true" />
-                <span>{t('nav.wishlist')}</span>
-                <AnimatePresence>
-                  {totalWishlistItems > 0 && (
-                    <motion.span
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      exit={{ scale: 0 }}
-                      className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-gradient-to-r from-pink-500 to-red-500 text-white text-xs flex items-center justify-center font-bold shadow-lg"
-                      aria-label={`${totalWishlistItems} items in wishlist`}
-                    >
-                      {totalWishlistItems}
-                    </motion.span>
-                  )}
-                </AnimatePresence>
-              </Button>
-            </motion.div>
-          </Link>
-
-          {/* Cart */}
-          <Link to="/cart" className="relative" aria-label={`Shopping cart with ${totalItems} items`}>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button variant="ghost" size="sm" className="font-medium bg-gray-100 hover:bg-gray-200 border-2 border-gray-300 rounded-lg px-3 py-2 transition-colors">
-                🛒
-                <span className="sr-only">{t('nav.cart')}</span>
-                <AnimatePresence>
-                  {totalItems > 0 && (
-                    <motion.span
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      exit={{ scale: 0 }}
-                      className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-gradient-to-r from-[#7BC4DB] to-[#5AB5D1] text-white text-xs flex items-center justify-center font-bold shadow-lg"
-                      aria-label={`${totalItems} items in cart`}
-                    >
-                      {totalItems}
-                    </motion.span>
-                  )}
-                </AnimatePresence>
-              </Button>
-            </motion.div>
-          </Link>
-
-          {/* Language Toggle - Desktop Only */}
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="hidden lg:block">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={toggleLanguage}
-              className="flex items-center gap-1.5 bg-[#7BC4DB]/20 hover:bg-[#7BC4DB]/30 border-2 border-[#7BC4DB] rounded-lg px-3 py-2 transition-colors"
-              aria-label={`Switch to ${language === 'es' ? 'English' : 'Spanish'}`}
-            >
-              <Globe className="h-4 w-4 text-[#7BC4DB]" aria-hidden="true" />
-              <span className="font-bold text-[#7BC4DB]">{language === 'es' ? 'EN' : 'ES'}</span>
-            </Button>
-          </motion.div>
-
-          {/* Mobile menu button - Hamburger */}
-          <motion.button
-            whileTap={{ scale: 0.95 }}
-            className="lg:hidden p-2.5 hover:bg-purple-50 transition-colors rounded-md"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-menu"
+      <nav className="mx-auto max-w-7xl px-6 py-4" aria-label="Main navigation">
+        <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-x-6">
+          {/* Logo - Left aligned */}
+          <Link 
+            to="/" 
+            className="flex items-center gap-2" 
+            aria-label="Capitan Poop - Go to homepage"
+            onClick={handleHomeClick}
           >
-            {mobileMenuOpen ? (
-              <X className="h-6 w-6 text-[#8B7FB8] stroke-[2.5]" aria-hidden="true" />
-            ) : (
-              <div className="flex flex-col gap-[5px] w-6" aria-hidden="true">
-                <motion.span 
-                  className="block h-[3px] w-full bg-gradient-to-r from-[#8B7FB8] to-[#7BC4DB] rounded-full"
-                  initial={false}
-                  whileHover={{ scaleX: 1.1 }}
-                  transition={{ duration: 0.2 }}
-                ></motion.span>
-                <motion.span 
-                  className="block h-[3px] w-full bg-gradient-to-r from-[#8B7FB8] to-[#7BC4DB] rounded-full"
-                  initial={false}
-                  whileHover={{ scaleX: 1.1 }}
-                  transition={{ duration: 0.2, delay: 0.05 }}
-                ></motion.span>
-                <motion.span 
-                  className="block h-[3px] w-full bg-gradient-to-r from-[#8B7FB8] to-[#7BC4DB] rounded-full"
-                  initial={false}
-                  whileHover={{ scaleX: 1.1 }}
-                  transition={{ duration: 0.2, delay: 0.1 }}
-                ></motion.span>
-              </div>
-            )}
-          </motion.button>
+            <motion.img 
+              whileHover={{ scale: 1.05, rotate: 2 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              src={logoImage} 
+              alt="Capitan Poop Logo" 
+              className="h-12 w-auto" 
+            />
+          </Link>
+
+          {/* Desktop Navigation - Centered */}
+          <div className="hidden lg:flex lg:gap-x-8 lg:items-center justify-center" role="navigation" aria-label="Primary">
+            <Link to="/" className="text-sm font-medium hover:text-[#8B7FB8] transition" onClick={handleHomeClick}>
+              {t('nav.home')}
+            </Link>
+
+            {/* Shop Link - No Dropdown */}
+            <Link to="/products" className="text-sm font-medium hover:text-[#8B7FB8] transition">
+              {t('nav.shop')}
+            </Link>
+
+            <Link to="/about" className="text-sm font-medium hover:text-[#8B7FB8] transition">
+              {t('nav.about')}
+            </Link>
+
+            <Link to="/our-method" className="text-sm font-medium hover:text-[#8B7FB8] transition">
+              {t('nav.ourMethod')}
+            </Link>
+            <Link to="/contact" className="text-sm font-medium hover:text-[#8B7FB8] transition">
+              {t('nav.contact')}
+            </Link>
+          </div>
+
+          {/* Right side buttons - Right aligned */}
+          <div className="flex items-center gap-2 justify-end">
+            {/* Login - Desktop Only */}
+            <Link to="/login" className="hidden lg:block">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button variant="ghost" size="sm" className="font-medium">
+                  {t('nav.login')}
+                </Button>
+              </motion.div>
+            </Link>
+
+            {/* Wishlist - Desktop Only */}
+            <Link to="/wishlist" className="relative hidden lg:block" aria-label={`Wishlist with ${totalWishlistItems} items`}>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button variant="ghost" size="sm" className="flex items-center gap-1.5 font-medium">
+                  <Heart className="h-5 w-5 text-red-500 fill-red-500" aria-hidden="true" />
+                  <span>{t('nav.wishlist')}</span>
+                  <AnimatePresence>
+                    {totalWishlistItems > 0 && (
+                      <motion.span
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        exit={{ scale: 0 }}
+                        className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-gradient-to-r from-pink-500 to-red-500 text-white text-xs flex items-center justify-center font-bold shadow-lg"
+                        aria-label={`${totalWishlistItems} items in wishlist`}
+                      >
+                        {totalWishlistItems}
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
+                </Button>
+              </motion.div>
+            </Link>
+
+            {/* Cart */}
+            <Link to="/cart" className="relative" aria-label={`Shopping cart with ${totalItems} items`}>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button variant="ghost" size="sm" className="font-medium bg-gray-100 hover:bg-gray-200 border-2 border-gray-300 rounded-lg px-3 py-2 transition-colors">
+                  🛒
+                  <span className="sr-only">{t('nav.cart')}</span>
+                  <AnimatePresence>
+                    {totalItems > 0 && (
+                      <motion.span
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        exit={{ scale: 0 }}
+                        className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-gradient-to-r from-[#7BC4DB] to-[#5AB5D1] text-white text-xs flex items-center justify-center font-bold shadow-lg"
+                        aria-label={`${totalItems} items in cart`}
+                      >
+                        {totalItems}
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
+                </Button>
+              </motion.div>
+            </Link>
+
+            {/* Language Toggle - Desktop Only */}
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="hidden lg:block">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={toggleLanguage}
+                className="flex items-center gap-1.5 bg-[#7BC4DB]/20 hover:bg-[#7BC4DB]/30 border-2 border-[#7BC4DB] rounded-lg px-3 py-2 transition-colors"
+                aria-label={`Switch to ${language === 'es' ? 'English' : 'Spanish'}`}
+              >
+                <Globe className="h-4 w-4 text-[#7BC4DB]" aria-hidden="true" />
+                <span className="font-bold text-[#7BC4DB]">{language === 'es' ? 'EN' : 'ES'}</span>
+              </Button>
+            </motion.div>
+
+            {/* Mobile menu button - Hamburger */}
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              className="lg:hidden p-2.5 hover:bg-purple-50 transition-colors rounded-md"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
+            >
+              {mobileMenuOpen ? (
+                <X className="h-6 w-6 text-[#8B7FB8] stroke-[2.5]" aria-hidden="true" />
+              ) : (
+                <div className="flex flex-col gap-[5px] w-6" aria-hidden="true">
+                  <motion.span 
+                    className="block h-[3px] w-full bg-gradient-to-r from-[#8B7FB8] to-[#7BC4DB] rounded-full"
+                    initial={false}
+                    whileHover={{ scaleX: 1.1 }}
+                    transition={{ duration: 0.2 }}
+                  ></motion.span>
+                  <motion.span 
+                    className="block h-[3px] w-full bg-gradient-to-r from-[#8B7FB8] to-[#7BC4DB] rounded-full"
+                    initial={false}
+                    whileHover={{ scaleX: 1.1 }}
+                    transition={{ duration: 0.2, delay: 0.05 }}
+                  ></motion.span>
+                  <motion.span 
+                    className="block h-[3px] w-full bg-gradient-to-r from-[#8B7FB8] to-[#7BC4DB] rounded-full"
+                    initial={false}
+                    whileHover={{ scaleX: 1.1 }}
+                    transition={{ duration: 0.2, delay: 0.1 }}
+                  ></motion.span>
+                </div>
+              )}
+            </motion.button>
+          </div>
         </div>
       </nav>
 
