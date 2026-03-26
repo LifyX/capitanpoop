@@ -81,14 +81,14 @@ export function PromoBanner() {
           </button>
 
           {/* Slide Indicators */}
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-6 flex gap-1.5">
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-6 flex gap-1.5 sm:gap-2">
             {slides.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
-                className={`w-2 h-2 rounded-full transition-all ${
+                className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all ${
                   index === currentSlide
-                    ? 'bg-white w-4'
+                    ? 'bg-white w-3 sm:w-4'
                     : 'bg-white/40 hover:bg-white/60'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
