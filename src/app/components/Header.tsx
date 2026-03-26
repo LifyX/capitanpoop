@@ -44,11 +44,11 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur shadow-md" role="banner">
       <nav className="mx-auto max-w-7xl px-6 py-4" aria-label="Main navigation">
-        <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-x-6">
+        <div className="flex items-center justify-between lg:grid lg:grid-cols-[1fr_auto_1fr] lg:gap-x-6">
           {/* Logo - Left aligned */}
           <Link 
             to="/" 
-            className="flex items-center gap-2" 
+            className="flex items-center gap-2 flex-shrink-0" 
             aria-label="Capitan Poop - Go to homepage"
             onClick={handleHomeClick}
           >
@@ -85,7 +85,7 @@ export function Header() {
           </div>
 
           {/* Right side buttons - Right aligned */}
-          <div className="flex items-center gap-2 justify-end">
+          <div className="flex items-center gap-2 justify-end flex-shrink-0">
             {/* Login - Desktop Only */}
             <Link to="/login" className="hidden lg:block">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
